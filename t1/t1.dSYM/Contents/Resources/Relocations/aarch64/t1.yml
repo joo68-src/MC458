@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/jaolucena/projetos/MC458/t1/t1'
+relocations:     []
+...
