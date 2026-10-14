@@ -1,21 +1,31 @@
+/*
+    DUPLA:
+    João Gabriel Almeida de Lucena - RA 281255
+    João Murilo Coutinho Martins - RA 249798
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
 // Função auxiliar para trocar dois elementos
 void swap(int *a, int *b) {
-    ??????? ????????();
-        ������ 00 FF FF 3F 3F 3F
-        FF FF FF FF FF FF FF FF
-        ??????? ???????? ???????? 
+    int help = *a;
+    *a = *b;
+    *b = help;
 }
 
 // 1. INSERTION SORT (Usado para subarrays pequenos)
 void insertionSort(int arr[], int left, int right) {
-    ??????????
-    ??????? ????????();
-        ������ 00 FF FF 3F 3F 3F
-        FF FF FF FF FF FF FF FF
-        ??????? ???????? ???????? 
+    for (int i = left + 1; i <= right; ++i) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= left && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
 }
 
 // 2. HEAPSORT E FUNÇÕES DE HEAP (Usado quando a recursão fica muito profunda)
