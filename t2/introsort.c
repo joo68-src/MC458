@@ -59,7 +59,7 @@ void heapSort(int arr[], int left, int right) {
 
 // 3. QUICKSORT PARTITION (Motor principal usando Mediana de Três)
 void medianOfThreeSwap(int arr[], int a, int b, int c) {
-    void medianOfThreeSwap(int arr[], int a, int b, int c) {
+    // Escolhe b como elemento do meio, a como o primeiro e c como ultimo elemento.
     if (arr[a] > arr[b])
         swap(&arr[a], &arr[b]);
 
@@ -68,20 +68,23 @@ void medianOfThreeSwap(int arr[], int a, int b, int c) {
 
     if (arr[b] > arr[c])
         swap(&arr[b], &arr[c]);
-    }
 }
 
 int partition(int arr[], int left, int right) {
-    ????????????????????????
-    ?????????????
-    ???? ?????? ?? ??????????
-    ???????????
-    ??????
-        ???????
-            ????????
-    ???????????
-    ???
-    ??????????
+    int mid = left + (right - left) / 2;
+    medianOfThreeSwap(arr, left, mid, right);
+    int pivot = arr[mid];                    
+
+    while (left <= right) {                  
+        while (arr[left] < pivot) left++;    
+        while (arr[right] > pivot) right--;  
+        if (left <= right) {                 
+            swap(&arr[left], &arr[right]);
+            left++;
+            right--;
+        }
+    }
+    return left;                             
 }
 
 // FUNÇÃO RECURSIVA DO INTROSORT
@@ -99,14 +102,12 @@ void introSortUtil(int arr[], int left, int right, int depthLimit) {
         heapSort(arr, left, right);
         return;
     }
-
     // Condição 3: Caso normal -> Quicksort
-    �#�▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-    00 FF 3F FF 00 FF 3F 3F
-    � � � � � � � � � � �
-    introSortUtil(arr, left, ▒▒▒▒▒▒▒- 1);
-    introSort� � � � � �  right, depthLimit - 1);
+    int q = partition(arr, left, right);
+    introSortUtil(arr, left, q - 1, depthLimit - 1);
+    introSortUtil(arr, q, right, depthLimit - 1);
 }
+
 
 // FUNÇÃO PRINCIPAL DE CHAMADA
 void introSort(int arr[], int n) {
