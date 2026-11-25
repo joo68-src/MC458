@@ -71,20 +71,17 @@ void medianOfThreeSwap(int arr[], int a, int b, int c) {
 }
 
 int partition(int arr[], int left, int right) {
-    int mid = left + (right - left) / 2;
-    medianOfThreeSwap(arr, left, mid, right);
-    int pivot = arr[mid];                    
-
-    while (left <= right) {                  
-        while (arr[left] < pivot) left++;    
-        while (arr[right] > pivot) right--;  
-        if (left <= right) {                 
+    medianOfThreeSwap(arr, left, left + (right - left) / 2, right);
+    while(left < right) {
+        while (arr[left] < arr[right]) left++;
+        while (arr[right] > arr[left]) right--;
+        if (left < right) {
             swap(&arr[left], &arr[right]);
             left++;
             right--;
         }
     }
-    return left;                             
+    return left;
 }
 
 // FUNÇÃO RECURSIVA DO INTROSORT
